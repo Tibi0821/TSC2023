@@ -14,3 +14,4 @@ git config --global --list<br>
 git status <br>
 git add .<br>
 git push .<br>
+ git config --global credential.helper store <br>
