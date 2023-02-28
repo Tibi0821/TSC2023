@@ -14,5 +14,7 @@ git config --global --list<br>
 git status <br>
 git add .<br>
 git push .<br>
- git config --global credential.helper store <br>
- acum merge, am avut un space <br>
+git config --global credential.helper store <br>
+acum merge, am avut un space <br>
+git config --global credential.helper store <br>
+ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
