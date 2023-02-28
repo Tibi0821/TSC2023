@@ -11,3 +11,6 @@
 git config --global user.name "your_username" <br>
 git config --global user.email "your_email_address@example.com"<br>
 git config --global --list<br>
+git status <br>
+git add .<br>
+git push
