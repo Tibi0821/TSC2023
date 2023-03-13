@@ -21,7 +21,7 @@ import instr_register_pkg::*;  // user-defined types are defined in instr_regist
   timeunit 1ns/1ns;
 
   instruction_t  iw_reg [0:31];  // an array of instruction_word structures
-
+  logic signed [63:0] result;
   // write to the register
   always@(posedge clk, negedge reset_n)   // write into register
     if (!reset_n) begin
@@ -29,6 +29,17 @@ import instr_register_pkg::*;  // user-defined types are defined in instr_regist
         iw_reg[i] = '{opc:ZERO,default:0};  // reset to all zeros
     end
     else if (load_en) begin
+    case (opcode)
+      PASSA : result = operand_a;
+      PASSB : result = operand_b;
+      ADD : result = operand_a + operand_b;
+      SUB : result = operand_a - operand_b;
+      MULT : result = operand_a * operand_b;
+      DIV : result = operand_a / operand_b;
+      MOD : result = operand_a % operand_b;
+      default : result = 0;
+
+      endcase
       iw_reg[write_pointer] = '{opcode,operand_a,operand_b};
     end
 
