@@ -19,3 +19,13 @@ pkg/dut/test/top
 
 Tema:
 adaugare un fir numit RES (sumare 6 biti, inmultire 10)
+
+test=instr_register.sv
+TOP=top.sv
+DUT=instr_register.sv
+
+5'h00 -> 5 biti in hexa
+
+valoare statica= isi mentine valoarea, nu se schimba , de fiecare data cand o apelam indiferent de apelari tot timpul variaila statica o sa fie definitea in aceasi zona de memorie!!!
+valori fara semn = 2^4 = 0...15 
+minus complement fata de 2

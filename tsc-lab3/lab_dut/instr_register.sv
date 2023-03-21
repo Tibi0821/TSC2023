@@ -1,11 +1,3 @@
-/***********************************************************************
- * A SystemVerilog RTL model of an instruction regisgter
- *
- * An error can be injected into the design by invoking compilation with
- * the option:  +define+FORCE_LOAD_ERROR
- *
- **********************************************************************/
-
 module instr_register
 import instr_register_pkg::*;  // user-defined types are defined in instr_register_pkg.sv
 (input  logic          clk,
@@ -30,6 +22,7 @@ import instr_register_pkg::*;  // user-defined types are defined in instr_regist
     end
     else if (load_en) begin
     case (opcode)
+      ZERO: result =0;
       PASSA : result = operand_a;
       PASSB : result = operand_b;
       ADD : result = operand_a + operand_b;
@@ -37,10 +30,9 @@ import instr_register_pkg::*;  // user-defined types are defined in instr_regist
       MULT : result = operand_a * operand_b;
       DIV : result = operand_a / operand_b;
       MOD : result = operand_a % operand_b;
-      default : result = 0;
-
+      
       endcase
-      iw_reg[write_pointer] = '{opcode,operand_a,operand_b};
+      iw_reg[write_pointer] = '{opcode,operand_a,operand_b,result};
     end
 
   // read from the register

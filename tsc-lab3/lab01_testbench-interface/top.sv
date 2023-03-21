@@ -1,7 +1,3 @@
-/***********************************************************************
- * A SystemVerilog top-level netlist to connect testbench to DUT
- **********************************************************************/
-
 module top;
   timeunit 1ns/1ns;
 
