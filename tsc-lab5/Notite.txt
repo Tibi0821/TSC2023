@@ -29,3 +29,19 @@ DUT=instr_register.sv
 valoare statica= isi mentine valoarea, nu se schimba , de fiecare data cand o apelam indiferent de apelari tot timpul variaila statica o sa fie definitea in aceasi zona de memorie!!!
 valori fara semn = 2^4 = 0...15 
 minus complement fata de 2
+
+
+tema=
+in fisierul inst reg test.sv
+avem w pointer si r pointer care sunt valori incrementare
+la r pointer valori random intre 0-31
+w pointer la fel
++un paramentru RND_case
+daca ia valoarea 
+0 avem cazul inc, inc
+1 inc, random
+2. random, inc
+3. random random
+
+si un parametru care sa se numeasca num_of_trans
+5, 7 , 11
