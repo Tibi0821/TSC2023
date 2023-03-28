@@ -1,0 +1,31 @@
+3:0 -> 0...15 (ptr extensii viitoare)
+2:2 -> 0...8
+
+7:0 -> 2^8 (=256)
+-128 : 127
+0:255 (unsigned)
+
+Valorilie neg se rep in complement fata de 2 (se neaga bit cu bit si se aduna 1)
+
+- (8/10) * 100 => (Palier de 1 / per (T) ) * 100  ==> Factor de umplere
+Avem un top
+primul modul (test)
+al 2-lea este DUT
+ [test]- multe conexiuni pe 5 biti -[dut]
+
+factor de umplere= 
+
+pkg/dut/test/top
+
+Tema:
+adaugare un fir numit RES (sumare 6 biti, inmultire 10)
+
+test=instr_register.sv
+TOP=top.sv
+DUT=instr_register.sv
+
+5'h00 -> 5 biti in hexa
+
+valoare statica= isi mentine valoarea, nu se schimba , de fiecare data cand o apelam indiferent de apelari tot timpul variaila statica o sa fie definitea in aceasi zona de memorie!!!
+valori fara semn = 2^4 = 0...15 
+minus complement fata de 2
