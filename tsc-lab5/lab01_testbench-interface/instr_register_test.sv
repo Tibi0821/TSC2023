@@ -13,7 +13,7 @@ module instr_register_test
 
   timeunit 1ns/1ns;
   parameter number_of_tranzactions = 5 ;
-
+  parameter RND_CASE = 2;
   int seed = 555;
 
   initial begin
@@ -45,9 +45,19 @@ module instr_register_test
       // later labs will replace this loop with iterating through a
       // scoreboard to determine which addresses were written and
       // the expected values to be read back
-     @(posedge clk) //read_pointer = i;
-		       read_pointer <= $unsigned($random)%32;
-      @(negedge clk) print_results;
+  if (RND_CASE == 0) begin // inc,inc
+		  @(posedge clk) read_pointer  = read_pointer + 1;
+		end else if (RND_CASE == 1) begin // inc,rand
+		  @(posedge clk) read_pointer  = $unsigned($urandom())%32;
+		end else if (RND_CASE == 2) begin // rand,inc
+		  @(posedge clk) read_pointer  = read_pointer + 1;
+		end else if (RND_CASE == 3) begin // rand,rand
+		  @(posedge clk) read_pointer  = $unsigned($urandom())%32;
+		end else begin
+		  @(posedge clk) read_pointer  = read_pointer + 1;
+		end
+		@(negedge clk) print_results;
+	
     end
 
     @(posedge clk) ;
@@ -67,7 +77,18 @@ module instr_register_test
     // addresses of 0, 1 and 2.  This will be replaceed with randomizeed
     // write_pointer values in a later lab
     //
-    static int temp = 0;
+    if (RND_CASE == 0) begin // inc,incr
+		write_pointer = write_pointer + 1;
+	  end else if (RND_CASE == 1) begin // inc,rand
+		write_pointer = write_pointer + 1;
+	  end else if (RND_CASE == 2) begin // rand,inc
+		write_pointer = $unsigned($urandom())%32;
+	  end else if (RND_CASE == 3) begin // rand,rand
+		write_pointer = $unsigned($urandom())%32;
+	  end else begin
+		write_pointer = write_pointer + 1;
+	  end
+    
     operand_a     <= $random(seed)%16;                 // between -15 and 15
     operand_b     <= $unsigned($random)%16;            // between 0 and 15
     opcode        <= opcode_t'($unsigned($random)%8);  // between 0 and 7, cast to opcode_t type
