@@ -13,7 +13,7 @@ module instr_register_test
 
   timeunit 1ns/1ns;
   parameter number_of_tranzactions = 5 ;
-  parameter RND_CASE = 2;
+  parameter RND_CASE = 3;
   int seed = 555;
 
   initial begin
@@ -93,7 +93,7 @@ module instr_register_test
     operand_b     <= $unsigned($random)%16;            // between 0 and 15
     opcode        <= opcode_t'($unsigned($random)%8);  // between 0 and 7, cast to opcode_t type
    // write_pointer <= temp++;
-    write_pointer <= $unsigned($random)%32;
+    write_pointer <= $unsigned($random)%32; // between -31 and 31
   endfunction: randomize_transaction
 
   function void print_transaction;
