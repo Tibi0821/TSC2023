@@ -17,6 +17,7 @@ module instr_register_test
   parameter number_of_tranzactions = 5 ;
   parameter RND_CASE = 2;
   int seed = 555;
+  integer error_count=0;
 
 /*covergroup declaration
   covergroup coverage_calc;
@@ -89,6 +90,14 @@ module instr_register_test
     $display(  "***  MATCH THE INPUT VALUES FOR EACH REGISTER LOCATION  ***");
     $display(  "***********************************************************\n");
     $display("Test name what was completed is : %s", testname);
+     $display("Total Errors : %0d\n", error_count);
+    if( error_count > 0) begin
+      $display("Test %s failed",test_name);
+    end 
+    else begin  
+      $display("Test %s passed",test_name);
+    end
+
     $finish;
   end
 
